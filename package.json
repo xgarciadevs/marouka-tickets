@@ -1,14 +1,30 @@
 {
-  "name": "tickets-bot",
-  "main": "main.js",
-  "author": "Lนcαѕ",
+  "name": "marouka-tickets",
   "version": "1.0.0",
-  "repository": "https://github.com/LucasB25/tickets-bot",
-  "description": "A cool Discord bot to manage tickets on your server",
-  "scripts": {
-    "start": "npm i && node main.js"
-  },
+  "description": "Ticket bot created for Marouka Support.",
+  "main": "main.js",
   "dependencies": {
     "discord.js": "^13.3.1"
-  }
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdg6227/marouka-tickets.git"
+  },
+  "keywords": [
+    "marouka",
+    "bot",
+    "tickets",
+    "marouka-bot",
+    "marouka-tickets",
+    "discord"
+  ],
+  "author": "Xavier Garcia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xdg6227/marouka-tickets/issues"
+  },
+  "homepage": "https://github.com/xdg6227/marouka-tickets#readme"
 }
