@@ -6,7 +6,7 @@
   "repository": "https://github.com/LucasB25/tickets-bot",
   "description": "A cool Discord bot to manage tickets on your server",
   "scripts": {
-    "start": "node main.js"
+    "start": "npm i && node main.js"
   },
   "dependencies": {
     "discord.js": "^13.3.1"
