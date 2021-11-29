@@ -63,18 +63,19 @@ module.exports = async (client, int) => {
 
         const ticketEmbed = new MessageEmbed()
           .setColor('GREEN')
-          .setDescription(`Welcome **${int.member.user.username}**, thanks for opening a ticket! One of our support team members will be with you shortly. To close the ticket, click the button below. Careful though, there is no confirmation!`);
+          .setDescription(`Welcome **${int.member.user.username}**,\n\nThanks for opening a ticket! One of our support team members will be with you shortly. In the mean time, feel free to explain the reason you've opened this ticket. \n\nTo close the ticket, click the button below. Careful though, there is no confirmation!`);
 
         const closeButton = new MessageButton()
+          .setEmoji('🔒')
           .setStyle('DANGER')
           .setLabel('Close ticket')
           .setCustomId(`closeTicket_${int.member.id}`);
 
         const row = new MessageActionRow().addComponents(closeButton);
         await channel.send({ content: '|| <@&899438099665408000> ||', embeds: [ticketEmbed], components: [row] });
-        return int.update({ content: `Your ticket was created! Visit it here: <#${channel.id}>\n|| <@${int.member.id}> ||`, components: [], ephemeral: true });
+        return int.update({ content: `✅ Your ticket was created! Visit it here: <#${channel.id}>`, components: [], ephemeral: true });
       } else {
-        return int.update({ content: `You already have an open ticket <#${channel.id}>`, components: [], ephemeral: true });
+        return int.update({ content: `<a:exclamationmark:914729220469567540> You already have an open ticket: <#${channel.id}>`, components: [], ephemeral: true });
       }
     }
 
@@ -100,20 +101,22 @@ module.exports = async (client, int) => {
 
       const ticketEmbed = new MessageEmbed()
         .setColor('RED')
-        .setAuthor(`${int.member.user.username} has closed the ticket`)
-        .setDescription('Use the buttons below to either reopen the ticket, save the ticket, or delete the ticket.');
+        .setDescription(`**:octagonal_sign: ${int.member.user.username} has closed the ticket**\n\nUse the buttons below to either reopen the ticket, save the ticket, or delete the ticket.`);
 
       const reopenButton = new MessageButton()
+        .setEmoji('📜')
         .setStyle('SUCCESS')
         .setLabel('Reopen ticket')
         .setCustomId(`reopenTicket_${int.customId.split('_')[1]}`);
 
       const saveButton = new MessageButton()
+        .setEmoji('📝')
         .setStyle('SUCCESS')
         .setLabel('Save ticket')
         .setCustomId(`saveTicket_${int.customId.split('_')[1]}`);
 
       const deleteButton = new MessageButton()
+        .setEmoji('<:trashcan:914734102597496832>')
         .setStyle('DANGER')
         .setLabel('Delete ticket')
         .setCustomId('deleteTicket');
@@ -142,19 +145,7 @@ module.exports = async (client, int) => {
         ]
       });
 
-      const ticketEmbed = new MessageEmbed()
-        .setAuthor(`Ticket was reopened`)
-        .setColor('GREEN')
-        .setDescription(`Welcome **${int.member.user.username}**, thanks for opening a ticket! One of our support team members will be with you shortly. To close the ticket, click the button below. Careful though, there is no confirmation!`);
-
-      const closeButton = new MessageButton()
-        .setStyle('DANGER')
-        .setLabel('Close this ticket')
-        .setCustomId(`closeTicket_${int.customId.split('_')[1]}`);
-
-      const row = new MessageActionRow().addComponents(closeButton);
-
-      return int.reply({ embeds: [ticketEmbed], components: [row] });
+      return int.reply({ content: 'Ticket was reopened.' });
     }
 
     case 'deleteTicket': {

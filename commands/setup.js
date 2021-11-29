@@ -3,11 +3,12 @@ const { Permissions, MessageEmbed, MessageActionRow, MessageButton } = require('
 module.exports = {
   name: 'setup',
   execute(client, message) {
-    if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return message.channel.send('You need to have the **manage messages** permission to use this command ❌');
+    if (message.author.id !== '528637169544331291') return message.reply('Lol, only the owner can run this command');
 
     const setupEmbed = new MessageEmbed()
+      .setTitle('<:ticket:914724126655135794> Create a Ticket')
       .setColor('PURPLE')
-      .setDescription('**Click on the button below to create a ticket!**');
+      .setDescription('To create a ticket, click on the button below!');
 
     const ticketButton = new MessageButton()
       .setEmoji('🔓')
